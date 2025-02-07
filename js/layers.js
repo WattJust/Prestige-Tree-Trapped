@@ -283,7 +283,7 @@ addLayer("b", {
         symbol: "B", // This appears on the layer's node. Default is the id with the first letter capitalized
         position: 0, // Horizontal position within a row. By default it uses the layer id and sorts in alphabetical order
         color: "#6e64c4",
-        requires() { return new Decimal(200).times((player.b.unlockOrder&&!player.b.unlocked)?5000:1) }, // Can be a function that takes requirement increases into account
+        requires() { return new Decimal(50).times((player.b.unlockOrder&&!player.b.unlocked)?1:1) }, // Can be a function that takes requirement increases into account
         resource: "boosters", // Name of prestige currency
         baseResource: "points", // Name of resource prestige is based on
         baseAmount() {return player.points}, // Get the current amount of baseResource
@@ -555,7 +555,7 @@ addLayer("g", {
         symbol: "G", // This appears on the layer's node. Default is the id with the first letter capitalized
         position: 1, // Horizontal position within a row. By default it uses the layer id and sorts in alphabetical order
         color: "#a3d9a5",
-        requires() { return new Decimal(200).times((player.g.unlockOrder&&!player.g.unlocked)?5000:1) }, // Can be a function that takes requirement increases into account
+        requires() { return new Decimal(50).times((player.g.unlockOrder&&!player.g.unlocked)?1:1) }, // Can be a function that takes requirement increases into account
         resource: "generators", // Name of prestige currency
         baseResource: "points", // Name of resource prestige is based on
         baseAmount() {return player.points}, // Get the current amount of baseResource
