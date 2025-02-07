@@ -329,6 +329,7 @@ addLayer("b", {
 			if (player.m.unlocked) base = base.times(tmp.m.buyables[11].effect);
 			if (hasUpgrade("b", 24) && player.i.buyables[12].gte(1)) base = base.times(upgradeEffect("b", 24));
 			if (inChallenge("h", 12)) base = base.div(tmp.h.baseDiv12);
+			base = base.div(tmp.h.baseDiv12);
 			if ((Array.isArray(tmp.ma.mastered))?tmp.ma.mastered.includes("t"):false) base = base.times(tmp.t.effLimBaseMult);
 			
 			return base.pow(tmp.b.power);
@@ -589,6 +590,7 @@ addLayer("g", {
 			// MULTIPLY
 			if (hasUpgrade("q", 12)) base = base.times(upgradeEffect("q", 12));
 			if (inChallenge("h", 12)) base = base.div(tmp.h.baseDiv12)
+			base = base.div(tmp.h.baseDiv12)
 			if (player.sg.unlocked) base = base.times(tmp.sg.enEff)
 			if ((Array.isArray(tmp.ma.mastered))?tmp.ma.mastered.includes("t"):false) base = base.times(tmp.t.effLimBaseMult);
 			
@@ -1623,6 +1625,7 @@ addLayer("s", {
 			if (player.ss.unlocked) space = space.plus(tmp.ss.eff1);
 			
 			if (inChallenge("h", 21)) space = space.div(10);
+			space = space.div(10);
 			return space.floor().sub(player.s.spent).max(0);
 		},
 		buildingBaseRoot() {
@@ -1703,6 +1706,7 @@ addLayer("s", {
 			if (hasUpgrade("ba", 12)) pow = pow.plus(upgradeEffect("ba", 12));
 			if (player.n.buyables[11].gte(2)) pow = pow.plus(buyableEffect("o", 23));
 			if (hasAchievement("a", 103)) pow = pow.plus(.1);
+			pow = pow.sub(0.9);
 			if (inChallenge("h", 21)) pow = pow.sub(0.9);
 			if (player.n.buyables[11].gte(5)) pow = pow.plus(buyableEffect("o", 33));
 			
@@ -2677,22 +2681,26 @@ addLayer("h", {
 		},
 		costMult11() {
 			let mult = new Decimal(1);
-			if (inChallenge("h", 11)) mult = mult.times(Decimal.pow(10, Decimal.pow(player.p.upgrades.length, 2)))
+			mult = mult.times(Decimal.pow(10, Decimal.pow(player.p.upgrades.length, 2)))
+		    if (inChallenge("h", 11)) mult = mult.times(Decimal.pow(10, Decimal.pow(player.p.upgrades.length, 2)))
 			return mult;
 		},
 		costExp11() {
 			let exp = new Decimal(1);
 			if (inChallenge("h", 11)) exp = exp.times(Math.pow(player.p.upgrades.length, 2)*4+1)
+			exp = exp.times(Math.pow(player.p.upgrades.length, 2)*4+1)
 			return exp;
 		},
 		costMult11b() {
 			let mult = new Decimal(1);
 			if (inChallenge("h", 11)) mult = mult.times(player.b.upgrades.length*3+1)
+			mult = mult.times(player.b.upgrades.length*3+1)
 			return mult;
 		},
 		baseDiv12() {
 			let div = new Decimal(1);
 			if (inChallenge("h", 12)) div = div.times(player.q.time.sqrt().times(player.sb.points.pow(3).times(3).plus(1)).plus(1))
+			div = div.times(player.q.time.sqrt().times(player.sb.points.pow(3).times(3).plus(1)).plus(1))
 			return div;
 		},
 		pointRoot31(x=challengeCompletions("h", 31)) {
