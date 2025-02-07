@@ -43,6 +43,8 @@ function getPointGen() {
 	if (hasUpgrade("p", 12)) gain = gain.times(upgradeEffect("p", 12));
 	if (hasUpgrade("p", 13)) gain = gain.times(upgradeEffect("p", 13));
 	if (hasUpgrade("p", 22)) gain = gain.times(upgradeEffect("p", 22));
+	if (hasUpgrade("b", 11)) mult = mult.times(upgradeEffect("b", 11));
+	if (hasUpgrade("g", 11)) mult = mult.times(upgradeEffect("g", 11));
 	if (hasUpgrade("b", 14) && player.i.buyables[12].gte(1)) gain = gain.times(upgradeEffect("b", 11))
 	if (((Array.isArray(tmp.ma.mastered))?tmp.ma.mastered.includes("e"):false) && hasUpgrade("e", 12)) gain = gain.times(upgradeEffect("e", 12))
 	if (hasAchievement("a", 21)) gain = gain.times(1.1);
@@ -56,6 +58,8 @@ function getPointGen() {
 	if (player.h.unlocked) gain = gain.times(tmp.h.effect);
 	if (player.q.unlocked) gain = gain.times(tmp.q.enEff);
 	
+	gain = gain.pow(2)
+	gain = gain.root(tmp.h.pointRoot31);
 	if (inChallenge("h", 31)) gain = gain.root(tmp.h.pointRoot31);
 	if (hasUpgrade("ss", 43)) gain = gain.pow(gain.lt(tmp.ss.upgrades[43].endpoint)?1.1:1.01);
 	if (hasUpgrade("hn", 31)) gain = gain.pow(1.05);
