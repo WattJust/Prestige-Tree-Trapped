@@ -57,8 +57,7 @@ function getPointGen() {
 	if (player.h.unlocked) gain = gain.times(tmp.h.effect);
 	if (player.q.unlocked) gain = gain.times(tmp.q.enEff);
 	
-	gain = gain.pow(2)
-	gain = gain.root(tmp.h.pointRoot31);
+
 	if (inChallenge("h", 31)) gain = gain.root(tmp.h.pointRoot31);
 	if (hasUpgrade("ss", 43)) gain = gain.pow(gain.lt(tmp.ss.upgrades[43].endpoint)?1.1:1.01);
 	if (hasUpgrade("hn", 31)) gain = gain.pow(1.05);
