@@ -18,7 +18,7 @@ const SOFTCAPS = {
 	p12: {
 		title: "Prestige Upgrade 2 (Prestige Boost)",
 		type: "log",
-		start() { return new Decimal("1e3500").times((hasUpgrade("hn", 12)) ? upgradeEffect("hn", 12) : 1) },
+		start() { return new Decimal("1e4750").times((hasUpgrade("hn", 12)) ? upgradeEffect("hn", 12) : 1)},
 		exp: new Decimal(1),
 		display() { return hasUpgrade("p", 12) && !hasChallenge("h", 22) && upgradeEffect("p", 12).gte(this.start()) },
 		info() { return "Starts at "+format(this.start())+"x, logarithmic" },

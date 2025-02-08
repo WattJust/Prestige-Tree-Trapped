@@ -94,9 +94,9 @@ addLayer("p", {
 					if (hasUpgrade("b", 34) && player.i.buyables[12].gte(1)) exp = exp.times(upgradeEffect("b", 34));
 					if ((Array.isArray(tmp.ma.mastered))?tmp.ma.mastered.includes(this.layer):false) exp = exp.times(1.1);
 					let f = "(x+2)^"+format(exp)
-					if (upgradeEffect("p", 12).gte("1e3500")) {
-						if (hasChallenge("h", 22)) f = "10^(sqrt(log(x+2))*"+format(Decimal.mul(exp, 3500).sqrt())+")"
-						else f = "log(x+2)*"+format(Decimal.div("1e3500",3500).times(exp))
+					if (upgradeEffect("p", 12).gte("1e4750")) {
+						if (hasChallenge("h", 22)) f = "10^(sqrt(log(x+2))*"+format(Decimal.mul(exp, 4750).sqrt())+")"
+						else f = "log(x+2)*"+format(Decimal.div("1e4750",4750).times(exp))
 					}
 					if (hasUpgrade("p", 14)) f += "^"+(hasUpgrade("hn", 14)?3.15:3)
 					return f;
@@ -388,7 +388,7 @@ addLayer("b", {
 			cols: 4,
 			11: {
 				title: "BP Combo",
-				description: "Best Boosters boost Prestige Point and Point gain.",
+				description: "Best Boosters boost Prestige Point gain.",
 				cost() { return tmp.h.costMult11b.times(((Array.isArray(tmp.ma.mastered))?tmp.ma.mastered.includes(this.layer):false)?1438:3) },
 				effect() { 
 					let ret = player.b.best.sqrt().plus(1);
@@ -439,7 +439,7 @@ addLayer("b", {
 					if (hasUpgrade("b", 14) && player.i.buyables[12].gte(1)) ret = ret.pow(upgradeEffect("b", 14));
 					return ret;
 				},
-				unlocked() { return player.b.unlocked&&player.b.best.gte(7) },
+				unlocked() { return player.b.unlocked&&player.b.best.gte(9) },
 				effectDisplay() { return "+"+format(tmp.b.upgrades[13].effect) },
 				formula() { 
 					let exp = new Decimal(1)
@@ -519,13 +519,13 @@ addLayer("b", {
 				title: "Better BP Combo",
 				description() { return "<b>BP Combo</b> uses a better formula"+(tmp.nerdMode?" (sqrt(x+1) -> (1.125^x)*sqrt(x+1))":"")+"." },
 				cost() { return tmp.h.costMult11b.times(((Array.isArray(tmp.ma.mastered))?tmp.ma.mastered.includes(this.layer):false)?1438:15) },
-				unlocked() { return hasAchievement("a", 41) || hasUpgrade("b", 31)},
+				unlocked() { return hasUpgrade("b", 31)},
 			},
 			33: {
 				title: "Even More Additions",
 				description: "<b>More Additions</b> is stronger based on your Super Boosters.",
 				cost() { return tmp.h.costMult11b.times(13) },
-				unlocked() { return hasAchievement("a", 41) || hasUpgrade("b", 32)},
+				unlocked() { return hasUpgrade("b", 32)},
 				effect() { return player.sb.points.times(player.sb.points.gte(4)?2.6:2).plus(1).pow(((Array.isArray(tmp.ma.mastered))?tmp.ma.mastered.includes(this.layer):false)?3:1) },
 				effectDisplay() { return format(tmp.b.upgrades[33].effect)+"x" },
 				formula() { 
@@ -688,7 +688,7 @@ addLayer("g", {
 			cols: 5,
 			11: {
 				title: "GP Combo",
-				description: "Best Generators boost Prestige Point and Point gain.",
+				description: "Best Generators boost Prestige Point gain.",
 				cost() { return new Decimal(((Array.isArray(tmp.ma.mastered))?tmp.ma.mastered.includes(this.layer):false)?380:3) },
 				effect() { return player.g.best.sqrt().plus(1).pow(((Array.isArray(tmp.ma.mastered))?tmp.ma.mastered.includes(this.layer):false)?5e5:1) },
 				unlocked() { return player.g.unlocked },
@@ -2938,7 +2938,7 @@ addLayer("q", {
 			pseudoUpgs: [],
         }},
         color: "#c20282",
-        requires: new Decimal("1e455"), // Can be a function that takes requirement increases into account
+        requires: new Decimal("1e512"), // Can be a function that takes requirement increases into account
         resource: "quirks", // Name of prestige currency
         baseResource: "generator power", // Name of resource prestige is based on
         baseAmount() {return player.g.power}, // Get the current amount of baseResource
